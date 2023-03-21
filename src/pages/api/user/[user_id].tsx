@@ -18,15 +18,12 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
             const user = await User.findById(user_id)
             res.json(user);
         }
-    } else if(req.method === "POST") {
-        const newUser = await User.create(req.body);
-        await newUser.save();
-        //Create new user
     } else if(req.method === "PUT") {
         await User.findOneAndUpdate({_id: user_id}, req.body);
+        res.json({msg: "OK"});
     } else if(req.method === "DELETE") {
         await User.findOneAndDelete({_id: user_id});
-
+        res.json({msg: "OK"});
     }
     
 }
