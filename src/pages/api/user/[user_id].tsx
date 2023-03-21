@@ -6,7 +6,7 @@ import User from '@/models/User';
 export default async function (req: NextApiRequest, res: NextApiResponse) {    
     const {user_id} = req.query;
 
-    const mongoose_url = process.env.NEXT_PUBLIC_MONGO_URL;
+    const mongoose_url = process.env.NEXT_PUBLIC_MONGO_URL!;
     await mongoose.connect(mongoose_url);
 
     console.log(User);
